@@ -61,10 +61,10 @@ def model_evaluate(query):
         classification_results: Classification results.
 
     """
-    engine = create_engine('sqlite:///../data/DisasterResponse.db')
+    engine = create_engine('sqlite:///data/DisasterResponse.db')
     df = pd.read_sql_table('Messages', engine)
 
-    model = joblib.load("../models/model.pkl")
+    model = joblib.load("models/model.pkl")
     
     classification_labels = model.predict([query])[0]
     classification_results = dict(zip(df.columns[4:], classification_labels))
