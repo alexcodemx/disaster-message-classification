@@ -18,8 +18,6 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 nltk.download(['wordnet','punkt','stopwords'])
 
-#python train_classifier.py ../data/DisasterResponse.db model.pkl
-
 def load_data(database_filepath):
     """Load data from the db
 

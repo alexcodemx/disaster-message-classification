@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 from sqlalchemy import create_engine
 
-#python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db
-
 def load_data(messages_filepath, categories_filepath):
     """Load data from the csv files.
 
