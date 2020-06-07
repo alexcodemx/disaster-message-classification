@@ -6,7 +6,18 @@ from sqlalchemy import create_engine
 #python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db
 
 def load_data(messages_filepath, categories_filepath):
-    
+    """Load data from the csv files.
+
+    Loads data from messages and categories csv files.
+
+    Args:
+        messages_filepath: Path to the messages csv file
+        categories_filepath: Path to the category csv file
+
+    Returns:
+        merged_df: Files merged in a data frame
+
+    """  
     messages = pd.read_csv(messages_filepath, dtype=str)
     categories = pd.read_csv(categories_filepath, dtype=str)
     
@@ -16,7 +27,17 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
-    
+    """Clean data.
+
+    Transforms and cleans the dataframe.
+
+    Args:
+        df: Dataframe
+
+    Returns:
+        df: Clean dataframe.
+
+    """    
     categories = df.categories.str.split(pat=";", expand=True)
     
     exp = lambda x: x.split("-")[0]
@@ -42,6 +63,18 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """Save data.
+
+    Saves the dataframe to a sqlite database.
+
+    Args:
+        df: Dataframe
+        database_filename: Name for the database
+
+    Returns:
+        None
+
+    """  
     
     engine = create_engine('sqlite:///{}'.format(database_filename))
     df.to_sql('Messages', engine, index=False, if_exists="replace")
