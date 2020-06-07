@@ -7,7 +7,17 @@ from model_scripts.model_data import model_evaluate
 @app.route('/')
 @app.route('/index')
 def index():
+    """Render Index
 
+    Render default page.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    """   
     figures = return_figures()
 
     # plot ids for the html id tag
@@ -23,6 +33,17 @@ def index():
 # web page that handles user query and displays model results
 @app.route('/go')
 def go():
+    """Render Go
+
+    Render go page with the results of the query.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    """   
     # save user input in query
     query = request.args.get('query', '') 
 
